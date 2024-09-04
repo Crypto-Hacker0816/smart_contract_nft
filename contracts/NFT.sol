@@ -8,9 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 contract NFT is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
-
     mapping(address => uint256[]) private balance;
-
     constructor() ERC721("Amazing Tokens", "AMAZ") {}
 
     // set the new token to the user's balance
@@ -26,14 +24,13 @@ contract NFT is ERC721URIStorage {
     // create a token for the user
     function createToken(string memory tokenURI) public returns (uint256) {
         _tokenIds.increment();
-        
+
         uint256 tokenId = _tokenIds.current();
 
 
         _mint(msg.sender, tokenId);
         _setTokenURI(tokenId, tokenURI);
         updateUsersNFTs(tokenId);
-
         return tokenId;
     }
 }
