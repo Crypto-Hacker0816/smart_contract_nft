@@ -149,6 +149,8 @@ contract Marketplace is ReentrancyGuard {
         MarketplaceItem[] memory items = new MarketplaceItem[](itemCount);
         for (uint256 i = 0; i < totalItemCount; i++) {
             if (idToMarketplaceItem[i + 1].owner == msg.sender) {
+
+
                 uint256 currentId = i + 1;
                 MarketplaceItem storage currentItem = idToMarketplaceItem[
                     currentId
@@ -168,6 +170,8 @@ contract Marketplace is ReentrancyGuard {
     {
         uint256 totalItemCount = _items.current();
         uint256 itemCount = 0;
+
+        
         uint256 currentIndex = 0;
 
         for (uint256 i = 0; i < totalItemCount; i++) {

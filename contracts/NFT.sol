@@ -26,7 +26,9 @@ contract NFT is ERC721URIStorage {
     // create a token for the user
     function createToken(string memory tokenURI) public returns (uint256) {
         _tokenIds.increment();
+        
         uint256 tokenId = _tokenIds.current();
+
 
         _mint(msg.sender, tokenId);
         _setTokenURI(tokenId, tokenURI);
